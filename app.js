@@ -1,22 +1,34 @@
-alert('Adivina el número secreto');
+//Variables
+let numeroMaximoPosible = 100;
+let numeroSecreto = Math.floor(Math.random()*numeroMaximoPosible)+1;
+let numeroUsuario = 0;
+let intentos = 1;
 
-// Agrega un console.log para verificar el valor de "intento" después de la entrada del usuario
-let intento = prompt('Elige un número entre 1 y 10');
-console.log('Valor de intento:', intento);
+let maximoIntetos = 3;
 
-let numeroSecreto = 5;
+console.log(numeroSecreto);
 
+while (numeroUsuario != numeroSecreto) {
+    numeroUsuario = parseInt(prompt(`Me indicas un número entre 1  y ${numeroMaximoPosible} por favor:`));
 
-// Agrega un console.log para verificar la comparación entre "intento" y "numeroSecreto"
-console.log('Resultado de la comparación:', intento == numeroSecreto);
+    console.log(numeroUsuario);
+    if (numeroUsuario == numeroSecreto) {
+        //Acertamos, fue verdadera la condición
+        alert(`Acertaste, el número es: ${numeroUsuario}. Lo hiciste en ${intentos} ${intentos == 1 ? 'vez' : 'veces' }`);
+    } else {
+        if (numeroUsuario > numeroSecreto) {
+            alert('El número secreto es menor');
+        } else {
+            alert('El número secreto es mayor');
+        }
+        
+        intentos++;
+       
 
-if (intento == numeroSecreto) {
-    alert('Te ganaste una noche de pasión ');
-} else {
-    // Agrega un console.log para verificar el valor de "numeroSecreto" cuando el jugador se equivoca
-    console.log('Valor del número secreto:', numeroSecreto);
-    alert('PERDISTE El número secreto era PERO BESAME :$ ' + numeroSecreto );
+        if (intentos > maximoIntetos) {
+            alert(`Llegaste al número máximo de  ${maximoIntetos} intentos`);
+            break;
+        }
+        
+    }
 }
-
-
-
